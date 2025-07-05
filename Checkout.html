@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuickRun - Checkout</title>
+  <!-- CSS -->
+  <style>
+    /* Body styling and layout */
+    body {
+      background: linear-gradient(180deg, #189AB4, #75e6d3);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #0bd7c6;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Main content area */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #0bd7c6;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Checkout section container */
+    .checkout-section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 3.5rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .checkout-section h1 {
+      text-align: center;
+      color: #0b5ed7;
+      margin-bottom: 2rem;
+    }
+
+    /* Order summary box */
+    .order-summary {
+      background-color: #f9f9f9;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      border-radius: 6px;
+    }
+
+    .order-summary h2 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .order-summary p {
+      margin: 0.5rem 0;
+    }
+
+    .order-summary .total {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #0b5ed7;
+    }
+
+    /* Payment details section */
+    .payment-details h2 {
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    /* Form label and input styles */
+    form label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    form input, form textarea {
+      width: 90%;
+      max-width: 600px;
+      padding: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Current page highlight */
+    .curr{
+        padding: 10px;
+        background: linear-gradient(180deg, #00040900, #00040915, #00000078);
+        transition: .5s;
+        border-radius: 5px;
+      }
+
+    /* Link hover effect */
+    a:hover{
+      font-weight: bold;
+      font-size: large;
+      transition: .5s;
+    }
+
+    /* Form buttons layout */
+    .form-buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .form-buttons button {
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      flex-grow: 1;
+      color: white;
+    }
+
+    /* Button color classes */
+    .confirm {
+      background-color: #28a745;
+    }
+
+    .cancel {
+      background-color: #dc3545;
+    }
+
+    .clear {
+      background-color: #6c757d;
+    }
+
+    .checkout {
+      background-color: #007bff;
+    }
+
+    .close {
+      background-color: #343a40;
+    }
+
+  </style>
+
+</head>
+<body>
+  <!-- Header with logo and navigation -->
+  <header>
+    <div class="logo">
+      <img src="/Assets/Logo.png" alt="Profile Picture" height="90px" style="border-radius: 25px;">
+    </div>
+    <nav>
+     <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="Cart.html">Cart</a></li>
+        <!-- Highlight current page -->
+        <li><a class="curr" href="Checkout.html">Checkout</a></li>
+       <li>
+          <a href="Login.html">
+            <img src="/Assets/PFP.jpg" alt="Profile Picture" height="30px" style="border-radius: 25px;">
+          </a>
+        </li>         </ul>
+    </nav>
+  </header>
+
+
+  <main>
+    <section class="checkout-section">
+      <h1>Checkout</h1>
+
+      <!-- Order summary  -->
+      <div class="order-summary">
+        <h2>Order Summary</h2>
+        <p><strong>Items:</strong> <span id="summary-items">0</span></p>
+        <p><strong>Subtotal:</strong> <span id="summary-subtotal">$0.00</span></p>
+        <p><strong>Discount (<span id="summary-discount-rate">10</span>%):</strong> <span id="summary-discount">-$0.00</span></p>
+        <p><strong>Tax (<span id="summary-tax-rate">15</span>%):</strong> <span id="summary-tax">+$0.00</span></p>
+        <hr />
+        <p class="total"><strong>Total Cost:</strong> <span id="summary-total">$0.00</span></p>
+      </div>
+
+      <!-- Payment form -->
+      <div class="payment-details">
+        <h2>Payment</h2>
+        <form>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="address">Card Information</label>
+          <textarea id="card" name="card" rows="3" required></textarea>
+
+          <label for="amount">Amount Being Paid</label>
+          <input type="number" id="amount" name="amount" required />
+
+          <!-- Buttons at bottom -->
+          <div class="form-buttons">
+            <button type="reset" class="cancel">Cancel</button>
+            <button type="button" class="clear">Clear All</button>
+            <button type="button" class="checkout">Check Out</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 QuickRun Delivery & Errand Services</p>
+  </footer>
+
+</body>
+</html>

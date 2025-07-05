@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>QuickRun - Custom Delivery</title>
+    <style>
+        body {
+                background: linear-gradient(180deg, #189AB4, #75e6d3);
+                color: #333;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                margin: 0;
+                box-sizing: border-box;
+        }
+
+        /* Header styles */
+        header {
+                background-color: #0bd7c6;
+                color: white;
+                padding: 1rem 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+        }
+
+        .logo {
+                font-size: 1.5rem;
+                font-weight: bold;
+        }
+        nav ul {
+                list-style: none;
+                display: flex;
+                gap: 1rem;
+        }
+
+        nav ul li a {
+                color: white;
+                text-decoration: none;
+        }
+
+        
+        main {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 2rem;
+        }
+
+        /* Footer styles */
+        footer {
+                background-color: #0bd7c6;
+                color: white;
+                text-align: center;
+                padding: 1rem;
+        }
+
+        /* Custom form section styling */
+        .custom-form-section {
+                max-width: 70rem;
+                margin: 2rem auto;
+                background: #ffffff;
+                padding: 2rem;
+                padding-right: 5rem;
+                padding-left: 5rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-form-section h1 {
+                text-align: center;
+                color: #0b5ed7;
+                margin-bottom: 2rem;
+        }
+
+        /* Form label and input styles */
+        .custom-form label {
+                display: block;
+                margin-top: 1rem;
+                font-weight: 600;
+        }
+
+        .custom-form input, .custom-form textarea, .custom-form select {
+                width: 100%;
+                max-width: 25rem;
+                padding: 0.75rem;
+                margin-top: 0.5rem;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 1rem;
+        }
+
+        /* File upload styling */
+        .file-upload-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-top: 0.5rem;
+                flex-wrap: wrap;
+        }
+
+        .file-upload-btn {
+                background-color: #0b5ed7;
+                color: white;
+                padding: 0.6rem 1.2rem;
+                border-radius: 5px;
+                font-weight: 600;
+                cursor: pointer;
+                display: inline-block;
+                transition: background-color 0.3s ease;
+        }
+
+        .file-upload-btn:hover {
+                background-color: #084298;
+        }
+
+        #file-chosen-ph { /* Corrected ID for file-chosen span */
+                font-style: italic;
+                font-size: 0.95rem;
+                color: #444;
+        }
+
+        /* Submit button styles */
+        .submit-btn {
+                padding: 1rem 3rem;
+                background-color: #28a745;
+                margin: 2rem;
+                justify-self: center;
+                font-size: medium;
+                font-weight: bold;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                flex-grow: 1;
+                color: white;
+                display: flex;
+                margin: 1rem;
+        }
+
+        .submit-btn:hover {
+        background-color: #146c43;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header with logo and navigation -->
+    <header>
+        <div class="logo">
+            <img src="/Assets/Logo.png" alt="Profile Picture" height="90px" style="border-radius: 25px;">
+        </div>
+        <nav>
+         <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="Cart.html">Cart</a></li>
+                <li><a href="Checkout.html">Checkout</a></li>
+                <li>
+                    <a href="Login.html">
+                        <img src="/Assets/PFP.jpg" alt="Profile Picture" height="30px" style="border-radius: 25px;">
+                    </a>
+                </li>              
+            </ul>
+        </nav>
+    </header>
+
+    
+    <main>
+        <section class="custom-form-section">
+            <h1>Custom Delivery</h1>
+
+            <!-- Custom delivery form -->
+            <form class="custom-form" onsubmit="addToCart(event)">
+                <!-- Restaurant name input -->
+                <label>Restaurant</label>
+                <input type="text" name="restaurantName" required />
+
+                <!-- Parish dropdown -->
+                <label for="parish">Parish:</label>
+                <select id="parish" name="parish" required>
+                        <option value="">-- Select an Parish --</option>
+                        <option value="Hanover">Hanover</option>
+                        <option value="St. Elizabeth">St. Elizabeth</option>
+                        <option value="St. James">St. James</option>
+                        <option value="Trelawny">Trelawny</option>
+                        <option value="Westmoreland">Westmoreland</option>
+                        <option value="St. Ann">St. Ann</option>
+                        <option value="St. Mary">St. Mary</option>
+                        <option value="Portland">Portland</option>
+                        <option value="Kingston">Kingston</option>
+                        <option value="St. Andrew">St. Andrew</option>
+                        <option value="Clarendon">Clarendon</option>
+                        <option value="Manchester">Manchester</option>
+                        <option value="St. Catherine">St. Catherine</option>
+                        <option value="St. Thomas">St. Thomas</option>
+                </select>
+
+                <!-- Restaurant location input -->
+                <label>Restaurant Location</label>
+                <input type="text" name="restaurantLocation" required />
+
+                <!-- Order details textarea -->
+                <label>Order Details</label>
+                <textarea name="orderDetails" required></textarea>
+
+                <!-- Delivery address input -->
+                <label>Delivery Address</label>
+                <input type="text" name="deliveryAddress" required />
+
+                <!-- Distance input -->
+                <label>Distance from Restaurant (km)</label>
+                <input type="number" name="distance" required />
+
+                <!-- Estimated delivery time input -->
+                <label>Estimated Delivery Time (minutes)</label>
+                <input type="number" name="estimatedTime" required />
+
+                <!-- File upload for receipt -->
+                <label>Attach receipt/instructions (optional)</label>
+                <div class="file-upload-wrapper">
+                    <input type="file" id="documents-ph" name="documents" multiple hidden />
+                    <label for="documents-ph" class="file-upload-btn"> Choose Files</label>
+                    <span id="file-chosen-ph">No files selected</span>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="submit-btn">Add To Cart</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 QuickRun Delivery & Errand Services</p>
+    </footer>
+    
+</body>
+</html>

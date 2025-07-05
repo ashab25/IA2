@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>QuickRun - Delivery</title>
+    <style>
+            
+        body {
+            background: linear-gradient(180deg, #189AB4, #75e6d3); 
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        /* Header styles */
+        header {
+                background-color: #0bd7c6;
+                color: white;
+                padding: 1rem 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+        }
+
+        .logo {
+                font-size: 1.5rem;
+                font-weight: bold;
+        }
+        nav ul {
+                list-style: none;
+                display: flex;
+                gap: 1rem;
+        }
+
+        nav ul li a {
+                color: white;
+                text-decoration: none;
+        }
+
+        /* Main content area */
+        main {
+                flex: 1;
+                display: flex;
+                flex-direction: column; 
+                justify-content: center;
+                align-items: center;
+                padding: 2rem;
+        }
+
+        /* Footer styles */
+        footer {
+                background-color: #0bd7c6;
+                color: white;
+                text-align: center;
+                padding: 1rem;
+        }
+
+        /* Current navigation item */
+        .curr{
+                padding: 10px;
+                background: linear-gradient(180deg, #00040900, #00040915, #00000078);
+                transition: .5s;
+                border-radius: 5px;
+            }
+
+        a{
+                text-decoration: none;
+        }
+        a:hover{
+                font-weight: bold;
+                font-size: large;
+                transition: .5s;
+        }
+
+        /* Restaurant grid layout */
+        .restaurant-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 2rem;
+                padding: 2rem;
+                max-width: 60rem;
+                margin: auto;
+        }
+
+        /* Restaurant box styles */
+        .restaurant-box {
+                border: 2px solid #0b5ed7;
+                padding-left: 5rem;
+                padding-right: 6rem;
+                padding: 3rem;
+                text-align: center;
+                border-radius: 10px;
+                background-color: #f4fdff;
+                cursor: pointer;
+                position: relative;
+                transition: transform 0.3s ease;
+        }
+
+        .restaurant-box:hover {
+                transform: scale(1.03);
+        }
+
+        .restaurant-box img {
+                width: 110px;
+                height: 110px;
+                object-fit: contain;
+        }
+
+        .restaurant-box p {
+                margin-top: 1rem;
+                font-weight: bold;
+                color: #0b5ed7;
+        }
+
+        /* Delivery form styles */
+        .delivery-form {
+                text-align: left;
+                margin-top: 1.5rem;
+                width: 100%;
+                max-width: 25rem;
+        }
+
+        .delivery-form label {
+                font-weight: 600;
+                margin-top: 1rem;
+                display: block;
+        }
+
+        .delivery-form input, .delivery-form textarea, .delivery-form select {
+                width: 90%;
+                max-width: 20rem;
+                padding: 0.75rem;
+                margin-top: 0.5rem;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 1rem;
+        }
+        
+        .delivery-form input[type="file"] {
+                padding: 0.3rem 0;
+        }
+
+        .delivery-form .submit-btn {
+                margin-top: 1.2rem;
+                background-color: #198754;
+                color: white;
+                padding: 0.6rem 1.2rem;
+                border-radius: 5px;
+                border: none;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+        }
+
+        .delivery-form .submit-btn:hover {
+                background-color: #146c43;
+        }
+
+        .hidden {
+                display: none;
+        }
+
+        /* File upload wrapper styles */
+        .file-upload-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-top: 0.5rem;
+                flex-wrap: wrap;
+        }
+
+        .file-upload-btn {
+                background-color: #0b5ed7;
+                color: white;
+                padding: 0.6rem 1.2rem;
+                border-radius: 5px;
+                font-weight: 600;
+                cursor: pointer;
+                display: inline-block;
+                transition: background-color 0.3s ease;
+        }
+
+        .file-upload-btn:hover {
+                background-color: #084298;
+        }
+
+        /* File chosen text */
+        .file-chosen { 
+                font-style: italic;
+                font-size: 0.95rem;
+                color: #444;
+        }
+        /* Submit button styles */
+        .submit-btn {
+                padding: 1rem 3rem;
+                background-color: #28a745;
+                margin: 2rem;
+                justify-self: center;
+                font-size: medium;
+                font-weight: bold;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                flex-grow: 1;
+                color: white;
+                display: flex;
+                margin: 1rem;
+        }
+
+        .submit-btn:hover {
+        background-color: #146c43;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- Header with logo and navigation -->
+    <header>
+        
+        <div class="logo"><img src="/Assets/Logo.png" alt="QuickRun Logo" height="90px" style="border-radius: 25px;"></div>
+        <nav>
+            <ul>         
+                <li><a class = "curr" href="Home.html">Home</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="Cart.html">Cart</a></li>
+                <li><a href="Checkout.html">Checkout</a></li>
+                <li>
+                    <a href="Login.html">
+                        <img src="/Assets/PFP.jpg" alt="Profile Picture" height="30px" style="border-radius: 25px;">
+                    </a>
+                </li>               
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <h1 style="text-align:center; margin-top: 2rem;">Select a Restaurant</h1>
+        <section class="restaurant-grid">
+                <!-- Pizza Hut -->
+                <div class="restaurant-box" onclick="toggleForm(this, 'Pizza Hut', event)">
+                <img src="/Assets/Pizza Hut Logo.png" alt="Pizza Hut Logo" />
+                <p>Pizza Hut</p>
+                <form class="delivery-form hidden" onsubmit="addToCart(event, this, 'Pizza Hut')">
+                    <!-- Parish selection -->
+                    <label for="type">Parish:</label>
+                        <select name="type" required>
+                                <option value="">-- Select an Parish --</option>
+                                <option value="Hanover">Hanover</option>
+                                <option value="St. Elizabeth">St. Elizabeth</option>
+                                <option value="St. James">St. James</option>
+                                <option value="Trelawny">Trelawny</option>
+                                <option value="Westmoreland">Westmoreland</option>
+                                <option value="St. Ann">St. Ann</option>
+                                <option value="St. Mary">St. Mary</option>
+                                <option value="Portland">Portland</option>
+                                <option value="Kingston">Kingston</option>
+                                <option value="St. Andrew">St. Andrew</option>
+                                <option value="Clarendon">Clarendon</option>
+                                <option value="Manchester">Manchester</option>
+                                <option value="St. Catherine">St. Catherine</option>
+                                <option value="St. Thomas">St. Thomas</option>
+                        </select>
+
+                     <!-- Restaurant location input -->
+                     <label>Location</label>
+                     <input type="text" name="location" required onclick="event.stopPropagation()" /> 
+
+                     <!-- Order details textarea -->
+                     <label>Order Details</label>
+                     <textarea name="order" required onclick="event.stopPropagation()"></textarea>
+
+                     <!-- Delivery address input -->
+                     <label>Delivery Address</label>
+                     <input type="text" name="deliveryLocation" required onclick="event.stopPropagation()" />
+
+                     <!-- Distance input -->
+                     <label>Distance from Restaurant (km)</label>
+                     <input type="number" name="distance" required onclick="event.stopPropagation()" />
+
+                     <!-- Estimated delivery time input -->
+                     <label>Estimated Delivery Time (minutes)</label>
+                     <input type="number" name="estimatedTime" required onclick="event.stopPropagation()" />
+
+                     <!-- File upload for receipt/instructions -->
+                     <label>Attach receipt/instructions (optional)</label>
+                     <div class="file-upload-wrapper" onclick="event.stopPropagation()">
+                         <input type="file" class="documents" name="documents" multiple hidden /> <label for="documents-ph-pizza" class="file-upload-btn"> Choose Files</label>
+                         <span class="file-chosen">No files selected</span> </div>
+
+                     <!-- Total cost (readonly) -->
+                     <label for="totalCost">Total Cost ($):</label>
+                 <input type="text" class="totalCost" name="totalCost" readonly style="background:#f0f0f0; font-weight:bold;" />
+                  <button type="submit" class="submit-btn" onclick="event.stopPropagation()">Add To Cart</button>
+                    </form>
+            </div>
+
+                <!-- Burger King -->
+                <div class="restaurant-box" onclick="toggleForm(this, 'Burger King', event)">
+                <img src="/Assets/Burger King Logo.png" alt="Burger King Logo" />
+                <p>Burger King</p>
+                <form class="delivery-form hidden" onsubmit="addToCart(event, this, 'Burger King')">
+                    <!-- Parish selection -->
+                    <label for="type">Parish:</label>
+                        <select name="type" required>
+                                <option value="">-- Select an Parish --</option>
+                                <option value="Hanover">Hanover</option>
+                                <option value="St. Elizabeth">St. Elizabeth</option>
+                                <option value="St. James">St. James</option>
+                                <option value="Trelawny">Trelawny</option>
+                                <option value="Westmoreland">Westmoreland</option>
+                                <option value="St. Ann">St. Ann</option>
+                                <option value="St. Mary">St. Mary</option>
+                                <option value="Portland">Portland</option>
+                                <option value="Kingston">Kingston</option>
+                                <option value="St. Andrew">St. Andrew</option>
+                                <option value="Clarendon">Clarendon</option>
+                                <option value="Manchester">Manchester</option>
+                                <option value="St. Catherine">St. Catherine</option>
+                                <option value="St. Thomas">St. Thomas</option>
+                        </select>
+
+                     <!-- Restaurant location input -->
+                     <label>Location</label>
+                     <input type="text" name="location" required onclick="event.stopPropagation()" /> 
+
+                     <!-- Order details textarea -->
+                     <label>Order Details</label>
+                     <textarea name="order" required onclick="event.stopPropagation()"></textarea>
+
+                     <!-- Delivery address input -->
+                     <label>Delivery Address</label>
+                     <input type="text" name="deliveryLocation" required onclick="event.stopPropagation()" />
+
+                     <!-- Distance input -->
+                     <label>Distance from Restaurant (km)</label>
+                     <input type="number" name="distance" required onclick="event.stopPropagation()" />
+
+                     <!-- Estimated delivery time input -->
+                     <label>Estimated Delivery Time (minutes)</label>
+                     <input type="number" name="estimatedTime" required onclick="event.stopPropagation()" />
+
+                     <!-- File upload for receipt/instructions -->
+                     <label>Attach receipt/instructions (optional)</label>
+                     <div class="file-upload-wrapper" onclick="event.stopPropagation()">
+                         <input type="file" class="documents" name="documents" multiple hidden /> <label for="documents-ph-burger" class="file-upload-btn"> Choose Files</label>
+                         <span class="file-chosen">No files selected</span> </div>
+
+                     <!-- Total cost (readonly) -->
+                     <label for="totalCost">Total Cost ($):</label>
+                 <input type="text" class="totalCost" name="totalCost" readonly style="background:#f0f0f0; font-weight:bold;" /> 
+                 <button type="submit" class="submit-btn" onclick="event.stopPropagation()">Add To Cart</button>
+                    </form>
+            </div>
+                
+                <!-- KFC -->
+                <div class="restaurant-box" onclick="toggleForm(this, 'KFC', event)">
+                <img src="/Assets/KFC Logo.png" alt="KFC Logo" />
+                <p>KFC</p>
+                <form class="delivery-form hidden" onsubmit="addToCart(event, this, 'KFC')">
+                    <!-- Parish selection -->
+                    <label for="type">Parish:</label>
+                        <select name="type" required>
+                                <option value="">-- Select an Parish --</option>
+                                <option value="Hanover">Hanover</option>
+                                <option value="St. Elizabeth">St. Elizabeth</option>
+                                <option value="St. James">St. James</option>
+                                <option value="Trelawny">Trelawny</option>
+                                <option value="Westmoreland">Westmoreland</option>
+                                <option value="St. Ann">St. Ann</option>
+                                <option value="St. Mary">St. Mary</option>
+                                <option value="Portland">Portland</option>
+                                <option value="Kingston">Kingston</option>
+                                <option value="St. Andrew">St. Andrew</option>
+                                <option value="Clarendon">Clarendon</option>
+                                <option value="Manchester">Manchester</option>
+                                <option value="St. Catherine">St. Catherine</option>
+                                <option value="St. Thomas">St. Thomas</option>
+                        </select>
+
+                     <!-- Restaurant location input -->
+                     <label>Location</label>
+                     <input type="text" name="location" required onclick="event.stopPropagation()" /> 
+
+                     <!-- Order details textarea -->
+                     <label>Order Details</label>
+                     <textarea name="order" required onclick="event.stopPropagation()"></textarea>
+
+                     <!-- Delivery address input -->
+                     <label>Delivery Address</label>
+                     <input type="text" name="deliveryLocation" required onclick="event.stopPropagation()" />
+
+                     <!-- Distance input -->
+                     <label>Distance from Restaurant (km)</label>
+                     <input type="number" name="distance" required onclick="event.stopPropagation()" />
+
+                     <!-- Estimated delivery time input -->
+                     <label>Estimated Delivery Time (minutes)</label>
+                     <input type="number" name="estimatedTime" required onclick="event.stopPropagation()" />
+
+                     <!-- File upload for receipt/instructions -->
+                     <label>Attach receipt/instructions (optional)</label>
+                     <div class="file-upload-wrapper" onclick="event.stopPropagation()">
+                         <input type="file" class="documents" name="documents" multiple hidden /> <label for="documents-ph-kfc" class="file-upload-btn"> Choose Files</label>
+                         <span class="file-chosen">No files selected</span> </div>
+
+                     <!-- Total cost (readonly) -->
+                     <label for="totalCost">Total Cost ($):</label>
+                 <input type="text" class="totalCost" name="totalCost" readonly style="background:#f0f0f0; font-weight:bold;" /> <button type="submit" class="submit-btn" onclick="event.stopPropagation()">Add To Cart</button>
+                    </form>
+            </div>
+
+                <!-- Island Grill -->
+                <div class="restaurant-box" onclick="toggleForm(this, 'Island Grill', event)">
+                <img src="/Assets/Island Grill Logo.png" alt="Island Grill Logo" />
+                <p>Island Grill</p>
+                <form class="delivery-form hidden" onsubmit="addToCart(event, this, 'Island Grill')">
+                    <!-- Parish selection -->
+                    <label for="type">Parish:</label>
+                        <select name="type" required>
+                                <option value="">-- Select an Parish --</option>
+                                <option value="Hanover">Hanover</option>
+                                <option value="St. Elizabeth">St. Elizabeth</option>
+                                <option value="St. James">St. James</option>
+                                <option value="Trelawny">Trelawny</option>
+                                <option value="Westmoreland">Westmoreland</option>
+                                <option value="St. Ann">St. Ann</option>
+                                <option value="St. Mary">St. Mary</option>
+                                <option value="Portland">Portland</option>
+                                <option value="Kingston">Kingston</option>
+                                <option value="St. Andrew">St. Andrew</option>
+                                <option value="Clarendon">Clarendon</option>
+                                <option value="Manchester">Manchester</option>
+                                <option value="St. Catherine">St. Catherine</option>
+                                <option value="St. Thomas">St. Thomas</option>
+                        </select>
+
+                     <!-- Restaurant location input -->
+                     <label>Location</label>
+                     <input type="text" name="location" required onclick="event.stopPropagation()" /> 
+
+                     <!-- Order details textarea -->
+                     <label>Order Details</label>
+                     <textarea name="order" required onclick="event.stopPropagation()"></textarea>
+
+                     <!-- Delivery address input -->
+                     <label>Delivery Address</label>
+                     <input type="text" name="deliveryLocation" required onclick="event.stopPropagation()" />
+
+                     <!-- Distance input -->
+                     <label>Distance from Restaurant (km)</label>
+                     <input type="number" name="distance" required onclick="event.stopPropagation()" />
+
+                     <!-- Estimated delivery time input -->
+                     <label>Estimated Delivery Time (minutes)</label>
+                     <input type="number" name="estimatedTime" required onclick="event.stopPropagation()" />
+
+                     <!-- File upload for receipt/instructions -->
+                     <label>Attach receipt/instructions (optional)</label>
+                     <div class="file-upload-wrapper" onclick="event.stopPropagation()">
+                         <input type="file" class="documents" name="documents" multiple hidden /> <label for="documents-ph-island" class="file-upload-btn"> Choose Files</label>
+                         <span class="file-chosen">No files selected</span> </div>
+
+                     <!-- Total cost (readonly) -->
+                     <label for="totalCost">Total Cost ($):</label>
+                 <input type="text" class="totalCost" name="totalCost" readonly style="background:#f0f0f0; font-weight:bold;" /> 
+                 <button type="submit" class="submit-btn" onclick="event.stopPropagation()">Add To Cart</button>
+                    </form>
+            </div>
+
+                <!-- Juici Patties -->
+                <div class="restaurant-box" onclick="toggleForm(this, 'Juici Patties', event)">
+                <img src="/Assets/Juici Patties Logo.png" alt="Juici Patties Logo" />
+                <p>Juici Beef</p>
+                <form class="delivery-form hidden" onsubmit="addToCart(event, this, 'Juici Patties')">
+                    <!-- Parish selection -->
+                    <label for="type">Parish:</label>
+                        <select name="type" required>
+                                <option value="">-- Select an Parish --</option>
+                                <option value="Hanover">Hanover</option>
+                                <option value="St. Elizabeth">St. Elizabeth</option>
+                                <option value="St. James">St. James</option>
+                                <option value="Trelawny">Trelawny</option>
+                                <option value="Westmoreland">Westmoreland</option>
+                                <option value="St. Ann">St. Ann</option>
+                                <option value="St. Mary">St. Mary</option>
+                                <option value="Portland">Portland</option>
+                                <option value="Kingston">Kingston</option>
+                                <option value="St. Andrew">St. Andrew</option>
+                                <option value="Clarendon">Clarendon</option>
+                                <option value="Manchester">Manchester</option>
+                                <option value="St. Catherine">St. Catherine</option>
+                                <option value="St. Thomas">St. Thomas</option>
+                        </select>
+
+                     <!-- Restaurant location input -->
+                     <label>Location</label>
+                     <input type="text" name="location" required onclick="event.stopPropagation()" /> 
+
+                     <!-- Order details textarea -->
+                     <label>Order Details</label>
+                     <textarea name="order" required onclick="event.stopPropagation()"></textarea>
+
+                     <!-- Delivery address input -->
+                     <label>Delivery Address</label>
+                     <input type="text" name="deliveryLocation" required onclick="event.stopPropagation()" />
+
+                     <!-- Distance input -->
+                     <label>Distance from Restaurant (km)</label>
+                     <input type="number" name="distance" required onclick="event.stopPropagation()" />
+
+                     <!-- Estimated delivery time input -->
+                     <label>Estimated Delivery Time (minutes)</label>
+                     <input type="number" name="estimatedTime" required onclick="event.stopPropagation()" />
+
+                     <!-- File upload for receipt/instructions -->
+                     <label>Attach receipt/instructions (optional)</label>
+                     <div class="file-upload-wrapper" onclick="event.stopPropagation()">
+                         <input type="file" class="documents" name="documents" multiple hidden /> <label for="documents-ph-juici" class="file-upload-btn"> Choose Files</label>
+                         <span class="file-chosen">No files selected</span> </div>
+
+                     <!-- Total cost (readonly) -->
+                     <label for="totalCost">Total Cost ($):</label>
+                 <input type="text" class="totalCost" name="totalCost" readonly style="background:#f0f0f0; font-weight:bold;" /> 
+                 <button type="submit" class="submit-btn" onclick="event.stopPropagation()">Add To Cart</button>
+                    </form>
+            </div>
+
+                <!-- Tastee Patties -->
+                <div class="restaurant-box" onclick="toggleForm(this, 'Tastee Patties', event)">
+                <img src="/Assets/Tastee Logo.png" alt="Tastee Patties Logo" />
+                <p>Tastee Patties</p>
+                <form class="delivery-form hidden" onsubmit="addToCart(event, this, 'Tastee Patties')">
+                    <!-- Parish selection -->
+                    <label for="type">Parish:</label>
+                        <select name="type" required>
+                                <option value="">-- Select an Parish --</option>
+                                <option value="Hanover">Hanover</option>
+                                <option value="St. Elizabeth">St. Elizabeth</option>
+                                <option value="St. James">St. James</option>
+                                <option value="Trelawny">Trelawny</option>
+                                <option value="Westmoreland">Westmoreland</option>
+                                <option value="St. Ann">St. Ann</option>
+                                <option value="St. Mary">St. Mary</option>
+                                <option value="Portland">Portland</option>
+                                <option value="Kingston">Kingston</option>
+                                <option value="St. Andrew">St. Andrew</option>
+                                <option value="Clarendon">Clarendon</option>
+                                <option value="Manchester">Manchester</option>
+                                <option value="St. Catherine">St. Catherine</option>
+                                <option value="St. Thomas">St. Thomas</option>
+                        </select>
+
+                     <!-- Restaurant location input -->
+                     <label>Location</label>
+                     <input type="text" name="location" required onclick="event.stopPropagation()" /> 
+
+                     <!-- Order details textarea -->
+                     <label>Order Details</label>
+                     <textarea name="order" required onclick="event.stopPropagation()"></textarea>
+
+                     <!-- Delivery address input -->
+                     <label>Delivery Address</label>
+                     <input type="text" name="deliveryLocation" required onclick="event.stopPropagation()" />
+
+                     <!-- Distance input -->
+                     <label>Distance from Restaurant (km)</label>
+                     <input type="number" name="distance" required onclick="event.stopPropagation()" />
+
+                     <!-- Estimated delivery time input -->
+                     <label>Estimated Delivery Time (minutes)</label>
+                     <input type="number" name="estimatedTime" required onclick="event.stopPropagation()" />
+
+                     <!-- File upload for receipt/instructions -->
+                     <label>Attach receipt/instructions (optional)</label>
+                     <div class="file-upload-wrapper" onclick="event.stopPropagation()">
+                         <input type="file" class="documents" name="documents" multiple hidden /> <label for="documents-ph-tastee" class="file-upload-btn"> Choose Files</label>
+                         <span class="file-chosen">No files selected</span> </div>
+
+                     <!-- Total cost (readonly) -->
+                     <label for="totalCost">Total Cost ($):</label>
+                 <input type="text" class="totalCost" name="totalCost" readonly style="background:#f0f0f0; font-weight:bold;" />
+                  <button type="submit" class="submit-btn" onclick="event.stopPropagation()">Add To Cart</button>
+                    </form>
+            </div>
+
+            
+        </section>
+
+        <!-- Custom delivery request button -->
+        <div style="text-align:center; margin: 2rem;">
+            <a href="Custom.html"><button style="padding: 10px 20px; font-size: 1rem; border-radius: 6px; background: #0b5ed7; color: white; border: none; cursor: pointer;">
+                Custom Delivery Request
+            </button></a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p style="text-align:center;">&copy; 2025 QuickRun Delivery & Errand Services</p>
+    </footer>
+
+  <!-- JavaScript to to manage form boxes and keep it from closing-->
+  <script>
+    function toggleForm(clickedBox, name, event) {
+      // Checks if the click originated from inside a form element
+      if (event.target.closest('.delivery-form')) {
+        return; 
+      }
+
+      const allForms = document.querySelectorAll('.delivery-form');
+      const allBoxes = document.querySelectorAll('.restaurant-box');
+
+      allBoxes.forEach(box => {
+        const form = box.querySelector('.delivery-form');
+        // Only hide forms that are currently visible and not the one in the clicked box
+        if (form && !form.classList.contains('hidden') && box !== clickedBox) {
+          form.classList.add('hidden');
+        }
+      });
+
+      const form = clickedBox.querySelector('.delivery-form');
+      if (form) { // Check if form exists
+        form.classList.toggle('hidden');
+
+      }
+    }
+  </script>
+</body>
+</html>

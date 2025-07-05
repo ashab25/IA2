@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuickRun - Invoice</title>
+  <!-- CSS -->
+  <style>
+    /* General body styling */
+    body {
+        background: linear-gradient(180deg, #189AB4, #75e6d3);
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    /* Header styling */
+    header {
+        background-color: #0bd7c6;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+
+    /* Main content area */
+    main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    /* Footer styling */
+    footer {
+        background-color: #0bd7c6;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    /* Currency box styling */
+    .curr{
+        padding: 10px;
+        background: linear-gradient(180deg, #00040900, #00040915, #00000078);
+        transition: .5s;
+        border-radius: 5px;
+      }
+
+    /* Link hover effect */
+    a:hover{
+      font-weight: bold;
+      font-size: large;
+      transition: .5s;
+    }
+
+    /* Invoice section container */
+    .invoice-section {
+        padding: 2rem;
+        max-width: 900px;
+        margin: 2rem auto;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .invoice-section h1 {
+        text-align: center;
+        color: #0b5ed7;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Invoice info (date, number) */
+    .invoice-info {
+        text-align: right;
+        margin-bottom: 1rem;
+    }
+
+    /* Company and customer info layout */
+    .company-customer {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+    }
+
+    /* Invoice table styling */
+    .invoice-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1.5rem;
+    }
+
+    .invoice-table th, .invoice-table td {
+        border: 1px solid #ccc;
+        padding: 0.8rem;
+        text-align: center;
+    }
+
+    .invoice-table th {
+        background-color: #0b5ed7;
+        color: white;
+    }
+
+    /* Invoice summary styling */
+    .invoice-summary {
+        font-size: 1.1rem;
+        background-color: #f9f9f9;
+        padding: 1rem;
+        border-radius: 6px;
+    }
+
+    .invoice-summary p {
+        margin: 0.5rem 0;
+    }
+
+    .invoice-summary .total {
+        font-size: 1.3rem;
+        color: #0b5ed7;
+        font-weight: bold;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    /* Button hover effects */
+    button:hover{
+      background-color: #0a7bb8;
+      transform: translateY(-1px);
+      transition: .5s ease;
+    }
+
+    /* Cart button styling */
+    .cart {
+        padding: 1rem 1rem;
+        background-color: #28a79a;
+        margin-top: 1rem;
+        margin: .5rem;
+        justify-self: flex-start;
+        font-size: medium;
+        font-weight: bold;
+
+    }
+
+    .cart:hover{
+        background-color:#20847a;
+        transform: translateY(-1px);
+        transition: .5s ease;
+    }
+
+    /* Checkout button styling */
+    .checkout{
+        padding: 1rem 1rem;
+        background-color: #28a745;
+        margin-top: 1rem;
+        margin: .5rem;
+        justify-self: flex-start;
+        font-size: medium;
+        font-weight: bold;
+
+    }
+
+    .checkout:hover{
+        background-color:#155a25;
+        transform: translateY(-1px);
+        transition: .5s ease;
+    }
+
+    /* Button group styling */
+    .form-buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .form-buttons button {
+      padding: 0.6rem .1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      flex-grow: 1;
+      color: white;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Logo and navigation bar -->
+    <div class="logo"><img src="/Assets/Logo.png" alt="Profile Picture" height="90px" style="border-radius: 25px;"></div>
+    <nav>
+     <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="Cart.html">Cart</a></li>
+        <li><a href="Checkout.html">Checkout</a></li>
+       <li>
+          <a href="Login.html">
+            <img src="/Assets/PFP.jpg" alt="Profile Picture" height="30px" style="border-radius: 25px;">
+          </a>
+        </li>   
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="invoice-section">
+      <h1>Invoice</h1>
+
+      <!-- Invoice date and number -->
+      <div class="invoice-info">
+        <p><strong>Date: July 5, 2025</strong> <span id="invoice-date"></span></p>
+        <p><strong>Invoice #:INV-123</strong> <span id="invoice-number"></span></p>
+      </div>
+
+      <!-- Company and customer details -->
+      <div class="company-customer">
+        <div>
+          <h3>From:</h3>
+          <p>QuickRun</p>
+          <p>Fairview, Montego Bay</p>
+          <p>St. James, Jamaica</p> </div>
+
+        <div>
+          <h3>To:</h3>
+          <p id="customer-name">Ashanae Brown</p> <p id="customer-address">Bogue, Montego Bay</p> <p id="customer-city">St. James, Jamaica</p> </div>
+      </div>
+
+      <!-- Invoice items table -->
+      <table class="invoice-table">
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Price</th>
+            <th>Type</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="invoice-table-body">
+          </tbody>
+      </table>
+
+      <!-- Invoice summary -->
+      <div class="invoice-summary"> 
+        <p><strong>Subtotal:</strong> <span id="summary-subtotal">$0.00</span></p>
+        <p><strong>Discount (<span id="summary-discount-rate">10</span>%):</strong> <span id="summary-discount">-$0.00</span></p>
+        <p><strong>Tax (<span id="summary-tax-rate">15</span>%):</strong> <span id="summary-tax">+$0.00</span></p>
+        <hr>
+        <p class="total"><strong>Total Amount Due:</strong> <span id="summary-total">$0.00</span></p>
+      </div>
+
+      <!-- Navigation buttons -->
+       <div class="form-buttons">
+            <button type="button" class="cart" onclick="location.href='Cart.html'">Back to Cart</button>
+            <button type="button" class="checkout" onclick="location.href='Checkout.html'">Checkout</button>
+          </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 QuickRun Delivery & Errand Services</p>
+  </footer>
+  
+</body>
+</html>

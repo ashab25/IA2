@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuickRun - Errand</title>
+  <!-- CSS -->
+  <style>
+    body {
+        background: linear-gradient(180deg, #189AB4, #75e6d3);
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    header {
+        background-color: #0bd7c6;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+
+    main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    footer {
+        background-color: #0bd7c6;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+    }
+
+
+    .errand-form-section {
+        max-width: 700px;
+        margin: 2rem auto;
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    }
+
+    .errand-form-section h1 {
+        text-align: center;
+        color: #0b5ed7;
+        margin-bottom: 2rem;
+    }
+
+    .errand-form label {
+        display: block;
+        margin-top: 1rem;
+        font-weight: 600;
+    }
+
+    .errand-form input, .errand-form textarea, .errand-form select {
+        width: 90%;
+        max-width: 25rem;
+        padding: 0.75rem;
+        margin-top: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .file-upload-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .file-upload-btn {
+        background-color: #0b5ed7;
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+    .file-upload-btn:hover {
+        background-color: #084298;
+    }
+
+    #file-chosen {
+        font-style: italic;
+        font-size: 0.95rem;
+        color: #444;
+    }
+
+
+
+    .submit-btn {
+        padding: 1rem 3rem;
+        background-color: #28a745;
+        margin: 2rem;
+        justify-self: center;
+        font-size: medium;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        flex-grow: 1;
+        color: white;
+        display: flex;
+        margin: 1rem;
+    }
+
+    .submit-btn:hover {
+    background-color: #146c43;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Header section with logo and navigation menu -->
+  <header>
+    <div class="logo">
+      <!-- Logo -->
+      <img src="/Assets/Logo.png" alt="Profile Picture" height="90px" style="border-radius: 25px;">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="Cart.html">Cart</a></li>
+        <li><a href="Checkout.html">Checkout</a></li>
+        <!-- Profile picture -->
+       <li>
+          <a href="Login.html">
+            <img src="/Assets/PFP.jpg" alt="Profile Picture" height="30px" style="border-radius: 25px;">
+          </a>
+        </li>   
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Errand request form section -->
+    <section class="errand-form-section">
+      <h1>Request an Errand</h1>
+
+      <!-- Form for submitting errand details -->
+      <form class="errand-form" onsubmit="">
+        <!-- Select errand type -->
+        <label for="type">Type of Errand:</label>
+        <select id="type" name="type" required>
+          <option value="">-- Select an Errand Type --</option>
+          <option value="Prescription Pick-Up">Prescription Pick-Up</option>
+          <option value="Grocery Run">Grocery Run</option>
+          <option value="Bill Payment">Bill Payment</option>
+          <option value="Package Pickup">Package Pickup</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <!-- Errand description -->
+        <label for="description">Description of Errand:</label>
+        <textarea id="description"
+                  name="description"
+                  rows="4"
+                  required></textarea>
+
+        <!-- Distance from office input -->
+        <label for="distanceOffice">Errand's Distance from QuickRun Office (in KM):</label>
+        <input type="number"
+                id="distanceOffice"
+                name="distanceOffice"
+                required
+                min="1"
+                step="0.1" />
+
+        <!-- Delivery location input -->
+        <label for="location">Delivery Location (if needed):</label>
+        <input type="text"
+                id="location"
+                name="location" />
+
+        <!-- Distance from errand location input -->
+        <label for="distanceErrand">Distance from Errand Location (in KM):</label>
+        <input type="number"
+                id="distanceErrand"
+                name="distanceErrand" min="0" step="0.1"/>
+
+        <!-- Estimated time input -->
+        <label for="estimatedTime">Estimated Time for Completion (in minutes)</label>
+        <input type="number" 
+                id="estimatedTime" 
+                name="estimatedTime" 
+                placeholder="e.g. 30" 
+                required />
+
+        <!-- File upload for documents -->
+        <label for="documents">Attach any documents (optional)</label>
+        <div class="file-upload-wrapper">
+            <input type="file" 
+                    id="documents" 
+                    name="documents" 
+                    multiple hidden />
+            <label for="documents" class="file-upload-btn"> Choose Files</label>
+            <span id="file-chosen">No files selected</span>
+        </div>
+
+        <!-- Total cost -->
+        <label for="totalCost">Total Cost ($):</label>
+        <input type="text" 
+                id="totalCost" 
+                name="totalCost" 
+                readonly style="background:#f0f0f0; font-weight:bold;" />
+
+        <!-- Submit button -->
+        <button type="submit" class="submit-btn">Add to Cart</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer section -->
+  <footer>
+    <p>&copy; 2025 QuickRun Delivery & Errand Services</p>
+  </footer>
+
+</body>
+</html>

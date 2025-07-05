@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuickRun - Home</title>
+  <style>
+    /* Body styles */
+    body {
+        background: linear-gradient(180deg, #189AB4, #75e6d3); 
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    /* Header styles */
+    header {
+        background-color: #0bd7c6;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+
+    /* Main content styles */
+    main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    /* Footer styles */
+    footer {
+        background-color: #0bd7c6;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        }
+
+    /* Home section styles */
+    .home{
+        text-align: center;
+        padding: 4rem 2rem;
+        background-color: #e6f0ff;
+        border-radius: 10px;
+        max-width: 900px;
+        margin: 2rem auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .home h1 {
+        font-size: 2.5rem;
+        color: #0b5ed7;
+        margin-bottom: 1rem;
+    }
+
+    .home p {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 2rem;
+    }
+
+    /* Button container styles */
+    .home-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    /* Current page nav highlight */
+    .curr{
+        padding: 10px;
+        background: linear-gradient(180deg, #00040900, #00040915, #00000078);
+        transition: .5s;
+        border-radius: 5px;
+      }
+
+      /* Link hover effect */
+      a:hover{
+        font-weight: bold;
+        font-size: large;
+        transition: .5s;
+      }
+
+    /* Button base styles */
+    .btn {
+        text-decoration: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Delivery button styles */
+    .delivery-btn {
+        background-color: #0b5ed7;
+    }
+
+    .delivery-btn:hover {
+        background-color: #084298;
+    }
+
+    /* Errand button styles */
+    .errand-btn {
+        background-color: #198754;
+    }
+
+    .errand-btn:hover {
+        background-color: #146c43;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Header with logo and navigation -->
+  <header>
+    <div class="logo">
+      <!-- Logo -->
+      <img src="/Assets/Logo.png" alt="Profile Picture" height="90px" style="border-radius: 25px;">
+    </div>
+    <nav>
+     <ul>
+        <!-- Navigation links -->
+        <li><a class = "curr" href="Home.html">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
+        <li><a href="Cart.html">Cart</a></li>
+        <li><a href="Checkout.html">Checkout</a></li>
+        <!-- Profile picture in nav -->
+        <li>
+          <a href="Login.html">
+            <img src="/Assets/PFP.jpg" alt="Profile Picture" height="30px" style="border-radius: 25px;">
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+      <!-- Home section -->
+    <section class="home">
+      <h1>Welcome to QuickRun!</h1>
+      
+      <p>Your reliable delivery and errand service. Fast, safe, and dependable.
+        <br><br>
+        Please select the service you want to access.
+      </p>
+
+      <!-- Service selection buttons -->
+      <div class="home-buttons">
+        <a href="Delivery.html" class="btn delivery-btn">Delivery</a>
+        <a href="Errand.html" class="btn errand-btn">Errand</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 QuickRun Delivery & Errand Services</p>
+  </footer>
+</body>
+</html>

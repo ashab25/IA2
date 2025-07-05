@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickRun Delivery - About Us</title>
+  <!-- CSS -->
+  <style>
+    body {
+        background: linear-gradient(180deg, #189AB4, #75e6d3); 
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    header {
+        background-color: #0bd7c6;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+
+    main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    footer {
+        background-color: #0bd7c6;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        }
+
+    .curr{
+        padding: 10px;
+        background: linear-gradient(180deg, #00040900, #00040915, #00000078);
+        transition: .5s;
+        border-radius: 5px;
+      }
+
+    nav a:hover{
+      font-weight: bold;
+      font-size: large;
+      transition: .5s;
+    }
+
+    .about-section {
+        background-color: #ffffff;
+        padding: 2rem 3rem;
+        margin: 2rem auto;
+        max-width: 600px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .about-section h1 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #0b5ed7;
+        }
+
+    .about-section .info p, .about-section .contact p {
+        margin: 0.7rem 0;
+        font-size: 1rem;
+    }
+
+    .about-section a {
+        color: #0b5ed7;
+        text-decoration: none;
+    }
+
+    .about-section a:hover {
+        text-decoration: underline;
+    }
+
+
+  </style>
+</head>
+<body>
+  <!-- Header section with logo and navigation menu -->
+  <header>
+    <div class="logo">
+      <!-- Logo-->
+      <img src="/Assets/Logo.png" alt="Profile Picture" height="90px" style="border-radius: 25px;">
+    </div>
+    <nav>
+      <ul>
+        <!-- Navigation links -->
+        <li><a href="Home.html">Home</a></li>
+        <li><a class="curr" href="About Us.html">About Us</a></li>
+        <li><a href="Cart.html">Cart</a></li>
+        <li><a href="Checkout.html">Checkout</a></li>
+        <li>
+          <a href="Login.html">
+            <img src="/Assets/PFP.jpg" alt="Profile Picture" height="30px" style="border-radius: 25px;">
+          </a>
+        </li>      
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main content area -->
+  <main>
+    <section class="about-section">
+      <!-- Heading -->
+      <h1>About Us</h1>
+      <div class="info">
+        <!-- Information -->
+        <p><strong>Full Name:</strong> Ashanae Brown</p>
+        <p><strong>Student ID#:</strong> 2305792</p>
+        <p><strong>Email:</strong> <a href="mailto:2305792@utech.edu.jm">2305792@utech.edu.jm</a></p>
+        <p><strong>Module Code:</strong> CIT2011</p>
+        <p><strong>Assignment Name:</strong> E-Commerce Website</p>
+        <p><strong>Class Day/Time:</strong> Wednesday 6 P.M.</p>
+      </div>
+
+      <div class="contact">
+        <!-- Contact information  -->
+        <p>We value your feedback. For any comments or queries, please email us at 
+        <a href="mailto:2305792@utech.edu.jm">2305792@utech.edu.jm</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer section -->
+  <footer>
+    <p>&copy; 2025 QuickRun Delivery & Errand Services</p>
+  </footer>
+</body>
+</html>
