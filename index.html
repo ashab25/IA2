@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickRun - Login</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            /* Gradient background */
+            background: linear-gradient(180deg, #189AB4, #75e6d3);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #0bd7c6;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Main content centering */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        /* Login form container */
+        .login-form {
+            background-color: #0000001b;
+            padding: 40px;
+            border-radius: 45px;
+            width: 100%;
+            max-width: 25rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            border: 1px solid #29d6ed;
+        }
+
+        /* Form title */
+        .form-title {
+            font-size: 25px;
+            line-height: 1.5;
+            font-weight: 700;
+            text-align: center;
+            color: #d0e3ff;
+            margin-bottom: 15px;
+        }
+
+        /* Form label styles */
+        .form-label {
+            display: block;
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: 500;
+            color: #e0e6f0;
+            margin-bottom: 15px;
+        }
+
+        /* Red asterisk for required fields */
+        .required-asterisk {
+            color: #ef4444;
+        }
+
+        /* Input field styles */
+        .form-input {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            padding-left: 15px;
+            border: 1px solid #e7e7e7;
+            border-radius: 20px;
+            font-size: 15px;
+            line-height: 1.25rem;
+            box-sizing: border-box;
+        }
+        .form-input:hover {
+            padding:15px;
+            border-radius: 25px;
+            transform: 0.5s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0px 10px 20px rgba(88, 81, 88, 0.349);
+        }
+
+        /* Link styles */
+        a{
+            color: #64f79f;
+        }
+
+        /* Forgot password and remember me row */
+        .forgot-password{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            color: #64f79f;
+        }
+
+        /* Checkbox styles */
+        input[type="checkbox"] {
+            height: 15px;
+            width: 15px;
+            color: #8b5cf6;
+            border-color: #d1d5db;
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+        input[type="checkbox"]:focus {
+            outline-color: #8b5cf6;
+        }
+
+        /* Submit button styles */
+        .submit-button {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px 15px;
+            border: 1px solid transparent;
+            border-radius: 15px;
+            font-size: 20px;
+            line-height: 1.75;
+            font-weight: 600;
+            color: #fff;
+            background-color: #05445E;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            margin-top: 40px;
+        }
+
+        .submit-button:hover {
+            background-color: #7a6eff;
+            transform: translateY(-2px);
+        }
+
+        .submit-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #6366f1;
+        }
+
+        /* Register text and link */
+        .register-text {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #05445E;
+        }
+
+        .register-link {
+            font-weight: 700;
+            color: #64f7f5;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .register-link:hover {
+            color: #66c4fe;
+            transform: .5s ease;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #0bd7c6;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with logo and navigation -->
+    <header>
+        <div class="logo">
+            <!-- Company logo image -->
+            <img src="/Assets/Logo.png" alt="Profile Picture" height="90px" style="border-radius: 25px;">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="Register.html">Register</a></li>
+                <!-- Profile picture in nav -->
+                <li>
+                    <a href="Login.html">
+                        <img src="/Assets/PFP.jpg" alt="Profile Picture" height="30px" style="border-radius: 25px;">
+                    </a>
+                </li>               
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content: Login form -->
+    <main>
+        <section class="login-form">
+            <h2 class="form-title">Login</h2>
+            <form action="#">
+                <!-- Username field -->
+                <div>
+                    <label for="username" class="form-label">Username <span class="required-asterisk">*</span></label>
+                    <input type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter username"
+                        required
+                        class="form-input">
+                </div>
+
+                <!-- Password field -->
+                <div>
+                    <label for="password" class="form-label">Password <span class="required-asterisk">*</span></label>
+                    <input type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter password"
+                        required
+                        minlength="8"
+                        class="form-input">
+                </div>
+
+                <!-- Remember me and forgot password row -->
+                <div class="forgot-password">
+                    <div class="remember-me">
+                        <input
+                            type="checkbox"
+                            id="remember-me"
+                            name="remember-me"
+                        >
+                        <label for="remember-me"> Remember me</label>
+                    </div>
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <!-- Login button -->
+                <div>
+                    <button type="button" class="submit-button" onclick="location.href='Home.html'">
+                        Log in
+                    </button>
+                </div>
+            </form>
+
+            <!-- Register link -->
+            <p class="register-text">
+                Don't have an acount?
+                <a href="Register.html" class="register-link">Register here</a>
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 QuickRun Delivery & Errand Services</p>
+    </footer>
+</body>
+</html>
